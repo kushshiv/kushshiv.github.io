@@ -100,6 +100,7 @@ export const galleryItemSchema = z
     id: z.string().min(1),
     title: z.string().min(1),
     kicker: z.string().min(1),
+    when: z.string().min(1).optional(),
     image: z.string().regex(/^\/.+/, 'image must be a public path starting with /'),
     kind: z.enum(['now', 'experience', 'project', 'passion']),
     company: z.string().min(1).optional(),
@@ -132,6 +133,7 @@ export type GalleryCard = {
   id: string
   title: string
   kicker: string
+  when?: string
   image: string
   summary: string
   details?: string

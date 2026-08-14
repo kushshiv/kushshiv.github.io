@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type FocusEvent, type PointerEvent as ReactPointerEvent } from 'react'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { galleryCards, profile } from '@/content/load'
@@ -29,6 +29,10 @@ function layout(index: number, origin: number, hovered: boolean) {
   }
 }
 
+function kickerLabel(card: GalleryCard) {
+  return card.when ? `${card.kicker} (${card.when})` : card.kicker
+}
+
 export default function Gallery() {
   const reduced = usePrefersReducedMotion()
   const [origin, setOrigin] = useState(0)
@@ -38,8 +42,21 @@ export default function Gallery() {
   const cardRefs = useRef<(HTMLButtonElement | null)[]>([])
   const drag = useRef({ active: false, lastY: 0, moved: false })
   const firstLayout = useRef(true)
+  const pointer = useRef({ x: 0, y: 0 })
+  const metaRef = useRef<HTMLDivElement>(null)
 
   const maxOrigin = Math.max(0, galleryCards.length - 1)
+  const hoveredCard = galleryCards.find((card) => card.id === hovered) ?? null
+
+  const placeMeta = (x: number, y: number) => {
+    pointer.current = { x, y }
+    const node = metaRef.current
+    if (!node) return
+    const pad = 18
+    const left = Math.min(Math.max(12, x + pad), window.innerWidth - node.offsetWidth - 12)
+    const top = Math.min(Math.max(12, y + pad), window.innerHeight - node.offsetHeight - 12)
+    node.style.transform = `translate3d(${left}px, ${top}px, 0)`
+  }
 
   useLayoutEffect(() => {
     if (!worldRef.current) return
@@ -87,6 +104,7 @@ export default function Gallery() {
     }
 
     const onPointerMove = (event: PointerEvent) => {
+      placeMeta(event.clientX, event.clientY)
       if (!drag.current.active) return
       const dy = event.clientY - drag.current.lastY
       if (Math.abs(dy) > 8) drag.current.moved = true
@@ -110,6 +128,11 @@ export default function Gallery() {
       window.removeEventListener('pointerup', onPointerUp)
     }
   }, [maxOrigin, opened, reduced])
+
+  useLayoutEffect(() => {
+    if (!hoveredCard) return
+    placeMeta(pointer.current.x, pointer.current.y)
+  }, [hoveredCard])
 
   useEffect(() => {
     if (!opened) return
@@ -147,6 +170,12 @@ export default function Gallery() {
       >
         {profile.email}
       </a>
+      {hoveredCard && !opened ? (
+        <div ref={metaRef} className="gallery-hover-meta" aria-hidden="true">
+          <p className="gallery-hover-kicker">{kickerLabel(hoveredCard)}</p>
+          <p className="gallery-hover-title">{hoveredCard.title}</p>
+        </div>
+      ) : null}
       <div
         ref={worldRef}
         className="gallery-world"
@@ -160,8 +189,10 @@ export default function Gallery() {
             key={card.id}
             card={card}
             onOpen={() => openCard(card, index)}
-            onEnter={() => {
-              if (!opened) setHovered(card.id)
+            onEnter={(event) => {
+              if (opened) return
+              if ('clientX' in event) placeMeta(event.clientX, event.clientY)
+              setHovered(card.id)
             }}
             onLeave={() => setHovered((current) => (current === card.id ? null : current))}
             cardRef={(node) => {
@@ -187,7 +218,7 @@ function CardFace({
 }: {
   card: GalleryCard
   onOpen: () => void
-  onEnter?: () => void
+  onEnter?: (event: ReactPointerEvent<HTMLButtonElement> | FocusEvent<HTMLButtonElement>) => void
   onLeave?: () => void
   cardRef?: (node: HTMLButtonElement | null) => void
   flat?: boolean
@@ -202,6 +233,8 @@ function CardFace({
       onClick={onOpen}
       onPointerEnter={onEnter}
       onPointerLeave={onLeave}
+      onFocus={onEnter}
+      onBlur={onLeave}
       aria-label={`${card.kicker}: ${card.title}`}
     >
       <span className="gallery-card-face">
@@ -228,7 +261,7 @@ function OpenedCard({ card, onClose }: { card: GalleryCard; onClose: () => void 
       >
         <img src={card.image} alt="" className="aspect-[16/10] w-full object-cover" />
         <div className="px-6 py-6 sm:px-8">
-          <p className="text-[11px] tracking-[0.18em] text-muted uppercase">{card.kicker}</p>
+          <p className="text-[11px] tracking-[0.18em] text-muted uppercase">{kickerLabel(card)}</p>
           <h2 id={`card-title-${card.id}`} className="mt-2 text-4xl tracking-[-0.04em]">
             {card.title}
           </h2>

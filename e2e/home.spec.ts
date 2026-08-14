@@ -7,13 +7,13 @@ test('overview shows a 3D card stack', async ({ page }) => {
   await expect(page.getByRole('link', { name: 'Overview' })).toBeVisible()
   await expect(page.getByRole('link', { name: 'Contact' })).toBeVisible()
   await expect(page.getByRole('link', { name: 'Work' })).toHaveCount(0)
-  await expect(page.getByRole('button', { name: 'Experience: Sennder' })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Previous Experience: Sennder' })).toBeVisible()
   await expect(page.locator('canvas')).toHaveCount(0)
 })
 
 test('clicking a card opens it', async ({ page }) => {
   await page.goto('/')
-  await page.getByRole('button', { name: 'Experience: Sennder' }).evaluate((node) => {
+  await page.getByRole('button', { name: 'Previous Experience: Sennder' }).evaluate((node) => {
     ;(node as HTMLButtonElement).click()
   })
   await expect(page.getByRole('dialog')).toContainText('Sennder')
@@ -36,7 +36,7 @@ test('contact has links', async ({ page }) => {
 
 test('lab cards include open lab and GitHub', async ({ page }) => {
   await page.goto('/')
-  await page.getByRole('button', { name: 'Personal project: BiteScore' }).evaluate((node) => {
+  await page.getByRole('button', { name: 'Personal Project: BiteScore' }).evaluate((node) => {
     ;(node as HTMLButtonElement).click()
   })
   const dialog = page.getByRole('dialog')

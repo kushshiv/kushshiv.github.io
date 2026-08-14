@@ -8,37 +8,41 @@ items:
     kind: now
   - id: sennder
     title: Sennder
-    kicker: Experience
+    kicker: Previous Experience
+    when: 2022 - 2026
     image: /gallery/sennder.png
     kind: experience
     company: Sennder Technologies
   - id: adcuratio
     title: Adcuratio
-    kicker: Experience
+    kicker: Previous Experience
+    when: 2021 - 2022
     image: /gallery/adcuratio.png
     kind: experience
     company: Adcuratio Media Inc
   - id: infosys
     title: Infosys
-    kicker: Experience
+    kicker: Previous Experience
+    when: 2019 - 2020
     image: /gallery/infosys.png
     kind: experience
     company: Infosys Ltd
   - id: tcs
     title: TCS
-    kicker: Experience
+    kicker: Previous Experience
+    when: 2016 - 2019
     image: /gallery/tcs.png
     kind: experience
     company: Tata Consultancy Services
   - id: bite-score
     title: BiteScore
-    kicker: Personal project
+    kicker: Personal Project
     image: /gallery/bite-score.png
     kind: project
     slug: bite-score
   - id: dendridb
     title: DendriDB
-    kicker: Personal project
+    kicker: Personal Project
     image: /gallery/dendridb.png
     kind: project
     slug: dendridb
