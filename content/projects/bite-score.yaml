@@ -1,0 +1,13 @@
+slug: bite-score
+name: BiteScore
+tagline: Food-trust scores from structured hygiene observations — not generic reviews.
+description: A food-trust MVP for consumers, owners, and moderators. Discover places, submit structured hygiene reviews with evidence, claim listings, and see a platform-derived trust score. This lab is a static teaser with canned Berlin data; the real app needs FastAPI and Postgres.
+stack:
+  - Nuxt 3
+  - Vue
+  - FastAPI
+  - PostgreSQL
+  - Docker
+github: https://github.com/kushshiv/bite-score
+demoPath: /labs/bite-score
+runLocally: git clone https://github.com/kushshiv/bite-score.git && cd bite-score && make up && make db-setup && make backend && make frontend

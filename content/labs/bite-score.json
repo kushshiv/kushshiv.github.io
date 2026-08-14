@@ -1,0 +1,65 @@
+{
+  "disclaimer": "Static teaser with canned Berlin data. The real BiteScore app needs FastAPI and Postgres.",
+  "places": [
+    {
+      "id": "kreuzberg-bowl",
+      "name": "Kreuzberg Bowl",
+      "area": "Kreuzberg",
+      "cuisine": "Vietnamese",
+      "score": 86,
+      "breakdown": { "hygiene": 90, "handling": 84, "staff": 88, "packaging": 82, "evidence": 80 },
+      "x": 42,
+      "y": 58
+    },
+    {
+      "id": "mitte-grill",
+      "name": "Mitte Grill",
+      "area": "Mitte",
+      "cuisine": "Anatolian",
+      "score": 74,
+      "breakdown": { "hygiene": 70, "handling": 76, "staff": 78, "packaging": 72, "evidence": 68 },
+      "x": 51,
+      "y": 36
+    },
+    {
+      "id": "prenzlauer-loaf",
+      "name": "Prenzlauer Loaf",
+      "area": "Prenzlauer Berg",
+      "cuisine": "Bakery",
+      "score": 91,
+      "breakdown": { "hygiene": 94, "handling": 90, "staff": 92, "packaging": 88, "evidence": 86 },
+      "x": 58,
+      "y": 28
+    },
+    {
+      "id": "neukolln-spice",
+      "name": "Neukölln Spice",
+      "area": "Neukölln",
+      "cuisine": "Indian",
+      "score": 69,
+      "breakdown": { "hygiene": 64, "handling": 72, "staff": 70, "packaging": 68, "evidence": 66 },
+      "x": 48,
+      "y": 72
+    },
+    {
+      "id": "charlottenburg-catch",
+      "name": "Charlottenburg Catch",
+      "area": "Charlottenburg",
+      "cuisine": "Seafood",
+      "score": 81,
+      "breakdown": { "hygiene": 85, "handling": 80, "staff": 79, "packaging": 84, "evidence": 77 },
+      "x": 28,
+      "y": 40
+    },
+    {
+      "id": "friedrichshain-fire",
+      "name": "Friedrichshain Fire",
+      "area": "Friedrichshain",
+      "cuisine": "Neapolitan pizza",
+      "score": 77,
+      "breakdown": { "hygiene": 75, "handling": 78, "staff": 82, "packaging": 74, "evidence": 73 },
+      "x": 64,
+      "y": 48
+    }
+  ]
+}

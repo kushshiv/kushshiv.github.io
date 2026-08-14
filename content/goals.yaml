@@ -1,0 +1,27 @@
+office:
+  - title: Cut MTTA and MTTR
+    detail: Finish the alerting and monitoring overhaul so mean time to acknowledge and repair drop with measured Datadog numbers.
+  - title: Streamline data ingestion
+    detail: Keep ingestion lag and failed batches visible, documented, and owned end to end.
+  - title: Team observability playbooks
+    detail: Shared dashboards, runbooks, and alert hygiene so the next on-call is not starting from scratch.
+  - title: Higher-signal on-call
+    detail: Fewer pages, clearer severity, and pages that map to something you can actually fix.
+projects:
+  - title: Host a BiteScore demo
+    detail: Production or cheap VPS deploy so the real app can replace this static lab.
+  - title: S3 evidence uploads
+    detail: Move BiteScore review photos off local disk onto object storage.
+  - title: Real DendriDB embeddings
+    detail: Replace the local-hash embedder with a proper model behind EMBEDDING_MODEL.
+  - title: Seed and playground
+    detail: Implement make seed and a tiny UI so DendriDB is demoable without reading OpenAPI first.
+stage:
+  - title: Compete NPC
+    detail: Step onto an NPC stage with a documented prep.
+  - title: Earn IFBB Pro card
+    detail: Long-horizon goal after NPC experience.
+  - title: Contest-prep system
+    detail: Training, peak week, and recovery written down so the next show is not improvised.
+  - title: Stay healthy through prep
+    detail: Progress without injuries that wipe a season.

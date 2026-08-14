@@ -1,0 +1,36 @@
+{
+  "disclaimer": "Simulation of the DendriDB API. Encode, associate, and recall use canned traces — no Postgres, Redis, or Neo4j on this page.",
+  "cues": [
+    {
+      "cue": "on-call",
+      "matches": ["pager", "alert", "mtta", "opsgenie"],
+      "working": "Hold the last three pages and the Datadog link in working memory (TTL 15m).",
+      "episodic": "Night shift: noisy CPU alert, then a Kafka lag page that was real.",
+      "semantic": "MTTA drops when alerts include a runbook URL and a single owner.",
+      "nodes": ["alert", "datadog", "runbook", "kafka", "on-call"]
+    },
+    {
+      "cue": "bite-score",
+      "matches": ["food", "hygiene", "restaurant", "trust"],
+      "working": "Current session is reviewing Kreuzberg Bowl evidence photos.",
+      "episodic": "Seeded 30 Berlin/Mumbai/Austin places and 100 structured reviews.",
+      "semantic": "Trust score weights hygiene, handling, staff, packaging, water, evidence, consistency.",
+      "nodes": ["hygiene", "evidence", "score", "moderation", "berlin"]
+    },
+    {
+      "cue": "memory",
+      "matches": ["recall", "embed", "graph", "forget"],
+      "working": "Active namespace: demo. Session keys expire unless pinned.",
+      "episodic": "Encoded a freight-ingestion incident, linked it to Kafka lag, recalled it from 'ingest'.",
+      "semantic": "Hybrid recall blends vector similarity with graph associations and recency.",
+      "nodes": ["encode", "associate", "recall", "decay", "pgvector"]
+    }
+  ],
+  "fallback": {
+    "cue": "unknown",
+    "working": "Nothing pinned. Try cues: on-call, bite-score, memory.",
+    "episodic": "No matching episode in the demo namespace.",
+    "semantic": "DendriDB would embed this cue and search; this lab only ships three traces.",
+    "nodes": ["miss", "namespace", "embed"]
+  }
+}

@@ -1,0 +1,49 @@
+# Drop a photo in public/gallery/ and point `image` at it (jpg/png/webp/svg).
+# Title is drawn on the card in the UI, so the photo does not need type.
+items:
+  - id: aviv
+    title: Aviv Group
+    kicker: Current project
+    image: /gallery/aviv.png
+    kind: now
+  - id: sennder
+    title: Sennder
+    kicker: Experience
+    image: /gallery/sennder.png
+    kind: experience
+    company: Sennder Technologies
+  - id: adcuratio
+    title: Adcuratio
+    kicker: Experience
+    image: /gallery/adcuratio.png
+    kind: experience
+    company: Adcuratio Media Inc
+  - id: infosys
+    title: Infosys
+    kicker: Experience
+    image: /gallery/infosys.png
+    kind: experience
+    company: Infosys Ltd
+  - id: tcs
+    title: TCS
+    kicker: Experience
+    image: /gallery/tcs.png
+    kind: experience
+    company: Tata Consultancy Services
+  - id: bite-score
+    title: BiteScore
+    kicker: Personal project
+    image: /gallery/bite-score.png
+    kind: project
+    slug: bite-score
+  - id: dendridb
+    title: DendriDB
+    kicker: Personal project
+    image: /gallery/dendridb.png
+    kind: project
+    slug: dendridb
+  - id: stage
+    title: The stage
+    kicker: Passion
+    image: /gallery/gnbf-gold.png
+    kind: passion

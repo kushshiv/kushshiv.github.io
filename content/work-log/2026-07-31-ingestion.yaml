@@ -1,0 +1,19 @@
+date: 2026-07-31
+title: Data ingestion on the freight platform
+status: shipped
+summary: Worked on data ingestion paths so downstream services see cleaner, more timely events. Second office focus to keep visible for PRC and interviews.
+metrics:
+  - name: Ingest lag
+    from: 12m
+    to: 3m
+    delta_pct: 75
+    note: Placeholder until you have pipeline SLOs
+  - name: Failed batches
+    from: 4.2%
+    to: 0.8%
+    delta_pct: 81
+    note: Placeholder until you have pipeline SLOs
+tags:
+  - kafka
+  - ingestion
+  - data

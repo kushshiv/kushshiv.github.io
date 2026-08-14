@@ -1,0 +1,35 @@
+groups:
+  - name: Frameworks / Languages
+    items:
+      - Python
+      - Django
+      - FastAPI
+      - Django REST Framework
+      - Typescript
+      - Vue.js
+      - C
+      - C++
+      - Shell
+      - Perl
+  - name: DevOps / Orchestration
+    items:
+      - Terraform
+      - Docker
+      - Podman
+      - Kubernetes
+      - AWS
+  - name: Database / Tools / Monitoring
+    items:
+      - PostgreSQL
+      - MongoDB
+      - Redis
+      - Celery
+      - Kafka
+      - Datadog
+      - Opsgenie
+      - GIT
+  - name: AI, LLMs & Developer Tools
+    items:
+      - Cursor
+      - GitHub Copilot
+      - LibreChat

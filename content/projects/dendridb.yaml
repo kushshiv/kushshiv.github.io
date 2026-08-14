@@ -1,0 +1,14 @@
+slug: dendridb
+name: DendriDB
+tagline: Brain-inspired memory engine for AI systems — encode, associate, recall, forget.
+description: An API-first memory layer with working, episodic, and semantic memory plus graph associations. Alpha (v0.1.0). This lab simulates encode → associate → recall with canned cues; the real engine needs Postgres, Redis, and Neo4j.
+stack:
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - pgvector
+  - Redis
+  - Neo4j
+github: https://github.com/kushshiv/dendridb
+demoPath: /labs/dendridb
+runLocally: git clone https://github.com/kushshiv/dendridb.git && cd dendridb && make setup && make docker-up && make migrate && make dev

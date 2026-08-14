@@ -1,0 +1,20 @@
+date: 2026-08-14
+title: Alerting and monitoring overhaul
+status: current
+summary: Streamlining the team's alerting and monitoring so on-call sees fewer noisy pages and faster signal. Placeholder Datadog numbers until the next measurement cycle.
+metrics:
+  - name: MTTA
+    from: 18m
+    to: 6m
+    delta_pct: 67
+    note: Placeholder until you have Datadog numbers
+  - name: MTTR
+    from: 45m
+    to: 20m
+    delta_pct: 56
+    note: Placeholder until you have Datadog numbers
+tags:
+  - datadog
+  - opsgenie
+  - on-call
+  - observability
