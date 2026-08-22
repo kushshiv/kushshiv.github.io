@@ -15,7 +15,7 @@ describe('site structure', () => {
     expect(screen.getByRole('navigation', { name: 'Primary' })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Overview' })).toBeInTheDocument()
     expect(screen.queryByRole('link', { name: 'Work' })).not.toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Contact' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'About' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Previous Experience: Sennder' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Passion: The stage' })).toBeInTheDocument()
     expect(document.querySelector('canvas')).toBeNull()

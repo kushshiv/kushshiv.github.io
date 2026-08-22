@@ -3,9 +3,9 @@
 Three-page static site for [kushshiv.github.io](https://kushshiv.github.io).
 
 - `/` Overview — 3D card stack
-- `/contact` Email, LinkedIn, GitHub
+- `/about` Bio, email, LinkedIn, GitHub, skills
 
-Card images: drop a photo in `public/gallery/` and set `image` on that card in `content/site.yaml`. All site copy lives in that file.
+Copy: `content/profile.yaml` (about) and `content/gallery.yaml` (cards). Drop card photos in `public/gallery/` and set `image` on that card.
 
 ```bash
 npm install

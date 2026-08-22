@@ -10,7 +10,7 @@ async function expectNoSeriousViolations(page: import('@playwright/test').Page) 
 }
 
 test('core pages have no serious axe violations', async ({ page }) => {
-  for (const path of ['/', '/contact']) {
+  for (const path of ['/', '/about']) {
     await page.goto(path)
     await expectNoSeriousViolations(page)
   }

@@ -1,10 +1,10 @@
 import { profile, skills } from '@/content/load'
 
-export default function Contact() {
+export default function About() {
   return (
     <main className="min-h-screen px-6 pt-28 pb-24 sm:px-10">
-      <section aria-label="Contact" className="max-w-2xl">
-        <h1 className="text-sm text-muted">Contact</h1>
+      <section aria-label="About" className="max-w-2xl">
+        <h1 className="text-sm text-muted">About</h1>
         <p className="mt-10 text-2xl leading-snug tracking-[-0.03em] sm:text-3xl">{profile.blurb}</p>
         <div className="mt-12 flex flex-wrap gap-8 text-sm">
           <a href={`mailto:${profile.email}`}>{profile.email}</a>

@@ -3,7 +3,7 @@ import { profile } from '@/content/load'
 
 const links = [
   { to: '/', label: 'Overview' },
-  { to: '/contact', label: 'Contact' },
+  { to: '/about', label: 'About' },
 ]
 
 export default function Nav() {

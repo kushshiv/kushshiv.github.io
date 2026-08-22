@@ -1,132 +1,5 @@
-# All site copy lives here (except canned lab data in content/labs/).
-# Edit a gallery card in one place: kicker, dates, summary, bullets, and stack.
-
-profile:
-  name: Shivendra Pratap Kushwaha
-  firstName: Shivendra
-  lastName: Pratap Kushwaha
-  title: Software Engineer II
-  location: Berlin, Germany
-  company: Sennder Technologies
-  blurb: Results-driven Software Engineer with 9+ years of experience in designing, developing, and deploying scalable backend systems across financial, logistics, and media domains. Proven success in building event-driven architectures and microservices applications on AWS. Strong focus on system reliability, performance optimisation, and end-to-end feature ownership.
-  email: shivendra.ds48@gmail.com
-  linkedin: https://linkedin.com/in/shivendrapk
-  github: https://github.com/kushshiv
-  photo: /profile.jpg
-  education:
-    - school: Jabalpur Engineering College (M.P.)
-      credential: Bachelor of Engineering (Mechanical Engineering)
-    - school: Purdue University (Online)
-      credential: Postgraduate Certification in Artificial Intelligence and Machine Learning
-
-skills:
-  groups:
-    - name: Frameworks / Languages
-      items:
-        - Python
-        - Django
-        - FastAPI
-        - Django REST Framework
-        - Typescript
-        - Vue.js
-        - C
-        - C++
-        - Shell
-        - Perl
-    - name: DevOps / Orchestration
-      items:
-        - Terraform
-        - Docker
-        - Podman
-        - Kubernetes
-        - AWS
-    - name: Database / Tools / Monitoring
-      items:
-        - PostgreSQL
-        - MongoDB
-        - Redis
-        - Celery
-        - Kafka
-        - Datadog
-        - Opsgenie
-        - GIT
-    - name: AI, LLMs & Developer Tools
-      items:
-        - Cursor
-        - GitHub Copilot
-        - LibreChat
-
-goals:
-  office:
-    - title: Cut MTTA and MTTR
-      detail: Finish the alerting and monitoring overhaul so mean time to acknowledge and repair drop with measured Datadog numbers.
-    - title: Streamline data ingestion
-      detail: Keep ingestion lag and failed batches visible, documented, and owned end to end.
-    - title: Team observability playbooks
-      detail: Shared dashboards, runbooks, and alert hygiene so the next on-call is not starting from scratch.
-    - title: Higher-signal on-call
-      detail: Fewer pages, clearer severity, and pages that map to something you can actually fix.
-  projects:
-    - title: Host a BiteScore demo
-      detail: Production or cheap VPS deploy so the real app can replace this static lab.
-    - title: S3 evidence uploads
-      detail: Move BiteScore review photos off local disk onto object storage.
-    - title: Real DendriDB embeddings
-      detail: Replace the local-hash embedder with a proper model behind EMBEDDING_MODEL.
-    - title: Seed and playground
-      detail: Implement make seed and a tiny UI so DendriDB is demoable without reading OpenAPI first.
-  stage:
-    - title: Compete NPC
-      detail: Step onto an NPC stage with a documented prep.
-    - title: Earn IFBB Pro card
-      detail: Long-horizon goal after NPC experience.
-    - title: Contest-prep system
-      detail: Training, peak week, and recovery written down so the next show is not improvised.
-    - title: Stay healthy through prep
-      detail: Progress without injuries that wipe a season.
-
-workLog:
-  - date: 2026-08-14
-    title: Alerting and monitoring overhaul
-    status: current
-    summary: Streamlining the team's alerting and monitoring so on-call sees fewer noisy pages and faster signal. Placeholder Datadog numbers until the next measurement cycle.
-    metrics:
-      - name: MTTA
-        from: 18m
-        to: 6m
-        delta_pct: 67
-        note: Placeholder until you have Datadog numbers
-      - name: MTTR
-        from: 45m
-        to: 20m
-        delta_pct: 56
-        note: Placeholder until you have Datadog numbers
-    tags:
-      - datadog
-      - opsgenie
-      - on-call
-      - observability
-  - date: 2026-07-31
-    title: Data ingestion on the freight platform
-    status: shipped
-    summary: Worked on data ingestion paths so downstream services see cleaner, more timely events. Second office focus to keep visible for PRC and interviews.
-    metrics:
-      - name: Ingest lag
-        from: 12m
-        to: 3m
-        delta_pct: 75
-        note: Placeholder until you have pipeline SLOs
-      - name: Failed batches
-        from: 4.2%
-        to: 0.8%
-        delta_pct: 81
-        note: Placeholder until you have pipeline SLOs
-    tags:
-      - kafka
-      - ingestion
-      - data
-
-gallery:
+# Gallery cards. Drop a photo in public/gallery/ and set image here.
+items:
   - id: aviv
     title: Aviv Group
     kicker: Current project
@@ -137,8 +10,14 @@ gallery:
     period: 2026 - Present
     summary: Streamlining the team's alerting and monitoring so on-call sees fewer noisy pages and faster signal.
     details:
-      - Leading the alerting and monitoring overhaul so on-call sees fewer noisy pages and faster signal.
-      - Keeping data ingestion lag and failed batches visible, documented, and owned end to end.
+      - title: "[IN PROGRESS] Improve alerting and monitoring"
+        items:
+          - A few monitors existed, but nobody was looking at them.
+          - Moving all monitors into Terraform so alerting is versioned and reviewable.
+          - Writing an SOP and alert-handling playbook so anyone on-call knows what to do.
+          - Setting up a weekly support rotation so one owner acknowledges each alert and takes full responsibility.
+          - Aiming for mean time to acknowledge under 10 minutes, with faster recovery.
+      - "[IN PROGRESS] Streamline data ingestion — Keep ingestion lag and failed batches visible, documented, and owned end to end."
     stack:
       - Python
       - FastAPI
@@ -268,6 +147,8 @@ gallery:
       - Let people discover places, submit evidence-backed reviews, and claim listings.
       - Derived a platform trust score from hygiene observations instead of generic reviews.
       - Shipped a static Berlin lab teaser; the full app is designed around FastAPI and Postgres.
+      - "[IN PROGRESS] Host a BiteScore demo — Production or cheap VPS deploy so the real app can replace this static lab."
+      - "[IN PROGRESS] S3 evidence uploads — Move BiteScore review photos off local disk onto object storage."
     stack:
       - Nuxt 3
       - Vue
@@ -291,6 +172,8 @@ gallery:
       - Encodes, associates, recalls, and forgets through graph associations.
       - Shipped an alpha (v0.1.0) lab that simulates encode → associate → recall from canned cues.
       - Designed the full engine around Postgres, Redis, and Neo4j.
+      - "[IN PROGRESS] Real DendriDB embeddings — Replace the local-hash embedder with a proper model behind EMBEDDING_MODEL."
+      - "[IN PROGRESS] Seed and playground — Implement make seed and a tiny UI so DendriDB is demoable without reading OpenAPI first."
     stack:
       - Python
       - FastAPI
@@ -314,6 +197,7 @@ gallery:
       - Competed at the GNBF 9th International in October 2025.
       - Stepped on stage in the Men's Physique division.
       - Completed an 8-month contest prep for the show.
-    nextGoals:
-      - Compete in NPC
-      - Become IFBB Pro
+      - "[IN PROGRESS] Compete NPC — Step onto an NPC stage with a documented prep."
+      - "[IN PROGRESS] Earn IFBB Pro card — Long-horizon goal after NPC experience."
+      - "[IN PROGRESS] Contest-prep system — Training, peak week, and recovery written down so the next show is not improvised."
+      - "[IN PROGRESS] Stay healthy through prep — Progress without injuries that wipe a season."

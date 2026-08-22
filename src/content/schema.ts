@@ -5,6 +5,15 @@ export const educationSchema = z.object({
   credential: z.string().min(1),
 })
 
+export const skillGroupSchema = z.object({
+  name: z.string().min(1),
+  items: z.array(z.string().min(1)).min(1),
+})
+
+export const skillsSchema = z.object({
+  groups: z.array(skillGroupSchema).min(1),
+})
+
 export const profileSchema = z.object({
   name: z.string().min(1),
   firstName: z.string().min(1),
@@ -18,6 +27,7 @@ export const profileSchema = z.object({
   github: z.string().url(),
   photo: z.string().min(1),
   education: z.array(educationSchema).min(1),
+  skills: skillsSchema,
 })
 
 export const roleSchema = z.object({
@@ -31,32 +41,6 @@ export const roleSchema = z.object({
 
 export const experienceSchema = z.object({
   roles: z.array(roleSchema).min(1),
-})
-
-export const skillGroupSchema = z.object({
-  name: z.string().min(1),
-  items: z.array(z.string().min(1)).min(1),
-})
-
-export const skillsSchema = z.object({
-  groups: z.array(skillGroupSchema).min(1),
-})
-
-export const metricSchema = z.object({
-  name: z.string().min(1),
-  from: z.string().min(1),
-  to: z.string().min(1),
-  delta_pct: z.number(),
-  note: z.string().optional(),
-})
-
-export const workLogSchema = z.object({
-  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-  title: z.string().min(1),
-  status: z.enum(['current', 'shipped']),
-  summary: z.string().min(1),
-  metrics: z.array(metricSchema).min(1),
-  tags: z.array(z.string().min(1)).min(1),
 })
 
 export const projectSchema = z.object({
@@ -77,25 +61,13 @@ export const projectSchema = z.object({
   runLocally: z.string().min(1),
 })
 
-export const passionSchema = z.object({
-  title: z.string().min(1),
-  headline: z.string().min(1),
-  summary: z.string().min(1),
-  achievement: z.string().min(1),
-  details: z.array(z.string().min(1)).min(1),
-  nextGoals: z.array(z.string().min(1)).min(1),
-})
-
-export const goalItemSchema = z.object({
-  title: z.string().min(1),
-  detail: z.string().min(1),
-})
-
-export const goalsSchema = z.object({
-  office: z.array(goalItemSchema).min(3).max(4),
-  projects: z.array(goalItemSchema).min(3).max(4),
-  stage: z.array(goalItemSchema).min(3).max(4),
-})
+export const detailItemSchema = z.union([
+  z.string().min(1),
+  z.object({
+    title: z.string().min(1),
+    items: z.array(z.string().min(1)).min(1),
+  }),
+])
 
 export const galleryItemSchema = z
   .object({
@@ -106,7 +78,7 @@ export const galleryItemSchema = z
     image: z.string().regex(/^\/.+/, 'image must be a public path starting with /'),
     kind: z.enum(['now', 'experience', 'project', 'passion']),
     summary: z.string().min(1),
-    details: z.array(z.string().min(1)).min(1),
+    details: z.array(detailItemSchema).min(1),
     stack: z.array(z.string().min(1)).optional(),
     role: z.string().min(1).optional(),
     period: z.string().min(1).optional(),
@@ -118,7 +90,6 @@ export const galleryItemSchema = z
     runLocally: z.string().min(1).optional(),
     headline: z.string().min(1).optional(),
     achievement: z.string().min(1).optional(),
-    nextGoals: z.array(z.string().min(1)).optional(),
   })
   .superRefine((item, ctx) => {
     if (item.kind === 'experience' && (!item.company || !item.role || !item.period || !item.stack)) {
@@ -147,25 +118,18 @@ export const galleryItemSchema = z
     }
   })
 
-export const siteSchema = z.object({
-  profile: profileSchema,
-  skills: skillsSchema,
-  goals: goalsSchema,
-  workLog: z.array(workLogSchema).min(1),
-  gallery: z.array(galleryItemSchema).min(1),
+export const gallerySchema = z.object({
+  items: z.array(galleryItemSchema).min(1),
 })
 
-export type Profile = z.infer<typeof profileSchema>
+export type ProfileFile = z.infer<typeof profileSchema>
+export type Profile = Omit<ProfileFile, 'skills'>
+export type Skills = z.infer<typeof skillsSchema>
 export type Experience = z.infer<typeof experienceSchema>
 export type Role = z.infer<typeof roleSchema>
-export type Skills = z.infer<typeof skillsSchema>
-export type WorkLogEntry = z.infer<typeof workLogSchema>
 export type Project = z.infer<typeof projectSchema>
-export type Passion = z.infer<typeof passionSchema>
-export type Goals = z.infer<typeof goalsSchema>
-export type Metric = z.infer<typeof metricSchema>
 export type GalleryItem = z.infer<typeof galleryItemSchema>
-export type Site = z.infer<typeof siteSchema>
+export type DetailItem = z.infer<typeof detailItemSchema>
 export type GalleryCard = {
   id: string
   title: string
@@ -173,7 +137,7 @@ export type GalleryCard = {
   when?: string
   image: string
   summary: string
-  details: string[]
+  details: DetailItem[]
   stack?: string[]
   meta?: string
   href?: string

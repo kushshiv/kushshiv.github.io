@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState, type FocusEvent, type Poi
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { galleryCards, profile } from '@/content/load'
-import type { GalleryCard } from '@/content/schema'
+import type { DetailItem, GalleryCard } from '@/content/schema'
 import usePrefersReducedMotion from '@/hooks/usePrefersReducedMotion'
 
 const SPACING = 350
@@ -31,6 +31,27 @@ function layout(index: number, origin: number, hovered: boolean) {
 
 function kickerLabel(card: GalleryCard) {
   return card.when ? `${card.kicker} (${card.when})` : card.kicker
+}
+
+function DetailLines({ details }: { details: DetailItem[] }) {
+  return (
+    <ul className="mt-6 list-disc space-y-2 pl-5 text-lg tracking-[-0.02em]">
+      {details.map((item) =>
+        typeof item === 'string' ? (
+          <li key={item}>{item}</li>
+        ) : (
+          <li key={item.title}>
+            {item.title}
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-base">
+              {item.items.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+          </li>
+        ),
+      )}
+    </ul>
+  )
 }
 
 export default function Gallery() {
@@ -267,13 +288,7 @@ function OpenedCard({ card, onClose }: { card: GalleryCard; onClose: () => void 
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-muted">{card.summary}</p>
           {card.meta ? <p className="mt-2 text-base font-medium tracking-[-0.02em] text-fg">{card.meta}</p> : null}
-          {card.details.length ? (
-            <ul className="mt-6 list-disc space-y-2 pl-5 text-lg tracking-[-0.02em]">
-              {card.details.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          ) : null}
+          {card.details.length ? <DetailLines details={card.details} /> : null}
           {card.stack?.length ? (
             <p className="mt-8 text-sm text-muted">{card.stack.join(' • ')}</p>
           ) : null}

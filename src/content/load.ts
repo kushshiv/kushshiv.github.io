@@ -1,40 +1,35 @@
 import { parse } from 'yaml'
 import {
-  siteSchema,
+  gallerySchema,
+  profileSchema,
   type Experience,
   type GalleryCard,
-  type Goals,
-  type Passion,
   type Profile,
   type Project,
   type Skills,
-  type WorkLogEntry,
 } from './schema'
 
-import siteRaw from '../../content/site.yaml?raw'
+import profileRaw from '../../content/profile.yaml?raw'
+import galleryRaw from '../../content/gallery.yaml?raw'
 
-const site = siteSchema.parse(parse(siteRaw))
+const profileFile = profileSchema.parse(parse(profileRaw))
+const { skills: skillGroups, ...profileFields } = profileFile
 
-export const profile: Profile = site.profile
-export const skills: Skills = site.skills
-export const goals: Goals = site.goals
+export const profile: Profile = profileFields
+export const skills: Skills = skillGroups
 
-export const workLog: WorkLogEntry[] = [...site.workLog].sort((a, b) => b.date.localeCompare(a.date))
+const galleryFile = gallerySchema.parse(parse(galleryRaw))
 
-export function currentFocus(entries: WorkLogEntry[] = workLog): WorkLogEntry {
-  const current = entries.filter((entry) => entry.status === 'current')
-  if (current.length !== 1) {
-    throw new Error(`Expected exactly one work-log item with status: current, found ${current.length}`)
-  }
-  return current[0]
+function flatDetails(details: (typeof galleryFile.items)[number]['details']) {
+  return details.flatMap((item) => (typeof item === 'string' ? [item] : [item.title, ...item.items]))
 }
 
-function cardMeta(item: (typeof site.gallery)[number]) {
+function cardMeta(item: (typeof galleryFile.items)[number]) {
   if (item.role && item.period) return `${item.role} · ${item.period}`
   return item.achievement
 }
 
-export const galleryCards: GalleryCard[] = site.gallery.map((item) => ({
+export const galleryCards: GalleryCard[] = galleryFile.items.map((item) => ({
   id: item.id,
   title: item.title,
   kicker: item.kicker,
@@ -49,14 +44,14 @@ export const galleryCards: GalleryCard[] = site.gallery.map((item) => ({
   github: item.github,
 }))
 
-export const projects: Project[] = site.gallery
+export const projects: Project[] = galleryFile.items
   .filter((item) => item.kind === 'project')
   .map((item) => ({
     slug: item.slug!,
     name: item.title,
     tagline: item.summary,
     description: item.description!,
-    details: item.details,
+    details: flatDetails(item.details),
     stack: item.stack!,
     github: item.github!,
     demoPath: item.demoPath!,
@@ -64,26 +59,14 @@ export const projects: Project[] = site.gallery
   }))
 
 export const experience: Experience = {
-  roles: site.gallery
+  roles: galleryFile.items
     .filter((item) => item.kind === 'experience')
     .map((item) => ({
       title: item.role!,
       company: item.company!,
       period: item.period!,
       summary: item.summary,
-      details: item.details,
+      details: flatDetails(item.details),
       stack: item.stack!,
     })),
-}
-
-const stage = site.gallery.find((item) => item.kind === 'passion')
-if (!stage) throw new Error('Gallery is missing a passion card')
-
-export const passion: Passion = {
-  title: stage.title,
-  headline: stage.headline ?? stage.title,
-  summary: stage.summary,
-  achievement: stage.achievement ?? '',
-  details: stage.details,
-  nextGoals: stage.nextGoals ?? [],
 }

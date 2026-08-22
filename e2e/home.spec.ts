@@ -5,7 +5,7 @@ test('overview shows a 3D card stack', async ({ page }) => {
   await expect(page).toHaveTitle(/Shivendra Pratap Kushwaha/)
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Shivendra')
   await expect(page.getByRole('link', { name: 'Overview' })).toBeVisible()
-  await expect(page.getByRole('link', { name: 'Contact' })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'About' })).toBeVisible()
   await expect(page.getByRole('link', { name: 'Work' })).toHaveCount(0)
   await expect(page.getByRole('button', { name: 'Previous Experience: Sennder' })).toBeVisible()
   await expect(page.locator('canvas')).toHaveCount(0)
@@ -21,8 +21,8 @@ test('clicking a card opens it', async ({ page }) => {
   await expect(page.getByRole('dialog')).toHaveCount(0)
 })
 
-test('contact has links', async ({ page }) => {
-  await page.goto('/contact')
+test('about has links', async ({ page }) => {
+  await page.goto('/about')
   await expect(page.getByRole('link', { name: 'LinkedIn' })).toHaveAttribute(
     'href',
     'https://linkedin.com/in/shivendrapk',
