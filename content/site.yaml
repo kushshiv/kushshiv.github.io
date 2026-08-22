@@ -1,0 +1,319 @@
+# All site copy lives here (except canned lab data in content/labs/).
+# Edit a gallery card in one place: kicker, dates, summary, bullets, and stack.
+
+profile:
+  name: Shivendra Pratap Kushwaha
+  firstName: Shivendra
+  lastName: Pratap Kushwaha
+  title: Software Engineer II
+  location: Berlin, Germany
+  company: Sennder Technologies
+  blurb: Results-driven Software Engineer with 9+ years of experience in designing, developing, and deploying scalable backend systems across financial, logistics, and media domains. Proven success in building event-driven architectures and microservices applications on AWS. Strong focus on system reliability, performance optimisation, and end-to-end feature ownership.
+  email: shivendra.ds48@gmail.com
+  linkedin: https://linkedin.com/in/shivendrapk
+  github: https://github.com/kushshiv
+  photo: /profile.jpg
+  education:
+    - school: Jabalpur Engineering College (M.P.)
+      credential: Bachelor of Engineering (Mechanical Engineering)
+    - school: Purdue University (Online)
+      credential: Postgraduate Certification in Artificial Intelligence and Machine Learning
+
+skills:
+  groups:
+    - name: Frameworks / Languages
+      items:
+        - Python
+        - Django
+        - FastAPI
+        - Django REST Framework
+        - Typescript
+        - Vue.js
+        - C
+        - C++
+        - Shell
+        - Perl
+    - name: DevOps / Orchestration
+      items:
+        - Terraform
+        - Docker
+        - Podman
+        - Kubernetes
+        - AWS
+    - name: Database / Tools / Monitoring
+      items:
+        - PostgreSQL
+        - MongoDB
+        - Redis
+        - Celery
+        - Kafka
+        - Datadog
+        - Opsgenie
+        - GIT
+    - name: AI, LLMs & Developer Tools
+      items:
+        - Cursor
+        - GitHub Copilot
+        - LibreChat
+
+goals:
+  office:
+    - title: Cut MTTA and MTTR
+      detail: Finish the alerting and monitoring overhaul so mean time to acknowledge and repair drop with measured Datadog numbers.
+    - title: Streamline data ingestion
+      detail: Keep ingestion lag and failed batches visible, documented, and owned end to end.
+    - title: Team observability playbooks
+      detail: Shared dashboards, runbooks, and alert hygiene so the next on-call is not starting from scratch.
+    - title: Higher-signal on-call
+      detail: Fewer pages, clearer severity, and pages that map to something you can actually fix.
+  projects:
+    - title: Host a BiteScore demo
+      detail: Production or cheap VPS deploy so the real app can replace this static lab.
+    - title: S3 evidence uploads
+      detail: Move BiteScore review photos off local disk onto object storage.
+    - title: Real DendriDB embeddings
+      detail: Replace the local-hash embedder with a proper model behind EMBEDDING_MODEL.
+    - title: Seed and playground
+      detail: Implement make seed and a tiny UI so DendriDB is demoable without reading OpenAPI first.
+  stage:
+    - title: Compete NPC
+      detail: Step onto an NPC stage with a documented prep.
+    - title: Earn IFBB Pro card
+      detail: Long-horizon goal after NPC experience.
+    - title: Contest-prep system
+      detail: Training, peak week, and recovery written down so the next show is not improvised.
+    - title: Stay healthy through prep
+      detail: Progress without injuries that wipe a season.
+
+workLog:
+  - date: 2026-08-14
+    title: Alerting and monitoring overhaul
+    status: current
+    summary: Streamlining the team's alerting and monitoring so on-call sees fewer noisy pages and faster signal. Placeholder Datadog numbers until the next measurement cycle.
+    metrics:
+      - name: MTTA
+        from: 18m
+        to: 6m
+        delta_pct: 67
+        note: Placeholder until you have Datadog numbers
+      - name: MTTR
+        from: 45m
+        to: 20m
+        delta_pct: 56
+        note: Placeholder until you have Datadog numbers
+    tags:
+      - datadog
+      - opsgenie
+      - on-call
+      - observability
+  - date: 2026-07-31
+    title: Data ingestion on the freight platform
+    status: shipped
+    summary: Worked on data ingestion paths so downstream services see cleaner, more timely events. Second office focus to keep visible for PRC and interviews.
+    metrics:
+      - name: Ingest lag
+        from: 12m
+        to: 3m
+        delta_pct: 75
+        note: Placeholder until you have pipeline SLOs
+      - name: Failed batches
+        from: 4.2%
+        to: 0.8%
+        delta_pct: 81
+        note: Placeholder until you have pipeline SLOs
+    tags:
+      - kafka
+      - ingestion
+      - data
+
+gallery:
+  - id: aviv
+    title: Aviv Group
+    kicker: Current project
+    when: 2026 - Present
+    image: /gallery/aviv.png
+    kind: now
+    role: Software Engineer II
+    period: 2026 - Present
+    summary: Streamlining the team's alerting and monitoring so on-call sees fewer noisy pages and faster signal.
+    details:
+      - Leading the alerting and monitoring overhaul so on-call sees fewer noisy pages and faster signal.
+      - Keeping data ingestion lag and failed batches visible, documented, and owned end to end.
+    stack:
+      - Python
+      - FastAPI
+      - Kafka
+      - AWS
+      - Datadog
+      - Opsgenie
+
+  - id: sennder
+    title: Sennder
+    kicker: Previous Experience
+    when: 2022 - 2026
+    image: /gallery/sennder.png
+    kind: experience
+    company: Sennder Technologies
+    role: Software Engineer II
+    period: Aug 2022 - Feb 2026
+    summary: Leading digital road freight forwarder in continental Europe, linking large commercial shippers with small freight carriers.
+    details:
+      - Migrated synchronous Django monolith into asynchronous FastAPI microservices using Kafka, improving system scalability and reliability.
+      - Designed and deployed event-driven architecture on AWS EKS via Terraform.
+      - Adopted an AI-first approach to optimize feature delivery using Copilot, Cursor, and LibreChat.
+      - Led end-to-end feature design and implementation, collaborating with cross-functional teams.
+      - Reduced production incidents and bugs and improved stability and team delivery rate.
+      - Developed dashboards and alerts in Datadog, enhancing system observability and response times.
+      - Worked on service re-architecture and cleaned up more than 10K lines of unused code.
+    stack:
+      - Python
+      - FastAPI
+      - Django
+      - Typescript
+      - Vue.js
+      - Kafka
+      - AWS
+      - Terraform
+      - Datadog
+      - Opsgenie
+      - Copilot
+      - Cursor
+      - LibreChat
+
+  - id: adcuratio
+    title: Adcuratio
+    kicker: Previous Experience
+    when: 2021 - 2022
+    image: /gallery/adcuratio.png
+    kind: experience
+    company: Adcuratio Media Inc
+    role: Senior Software Engineer
+    period: Jan 2021 - Jun 2022
+    summary: Transform National Broadcast and Cable TV by enabling precision audience targeting at-scale for National advertisers, thereby increasing returns on their TV media investment.
+    details:
+      - Worked on Django Rest Framework for advertisement and OTT-ecommerce domain for mobile, web and TV application.
+      - Ensuring low latency, high availability applications with responsiveness to request from API.
+      - Worked on celery to implement task to update user information at scheduled times.
+      - Deployment of docker containerized application on EC2 manually.
+      - Working with various AWS services like EC2, S3, API Gateway, Lambda, Cloud Watch.
+    stack:
+      - Django
+      - Python
+      - PostgreSQL
+      - MongoDB
+      - Redis
+      - Celery
+      - Docker
+      - AWS
+      - GIT
+
+  - id: infosys
+    title: Infosys
+    kicker: Previous Experience
+    when: 2019 - 2020
+    image: /gallery/infosys.png
+    kind: experience
+    company: Infosys Ltd
+    role: Technology Analyst
+    period: Sep 2019 - Dec 2020
+    summary: An industry-leading digital banking solution suite that helps traditional and emerging financial institutions drive truly digital transformation.
+    details:
+      - Implementation of business logic in development of core banking functionalities in Finacle.
+      - Requirement gathering, analysis, design, development, unit testing and debugging of application Module.
+      - Development and Maintenance of bug fixes and patches for Deposits Module.
+      - Reconciliation of multiple version of product and keep the code updated as per clients version.
+      - Writing shell and python scripts to run EOD and SOD jobs like interest and paychecks.
+    stack:
+      - C++
+      - Python
+      - Shell
+      - OOPS
+      - CVS
+
+  - id: tcs
+    title: TCS
+    kicker: Previous Experience
+    when: 2016 - 2019
+    image: /gallery/tcs.png
+    kind: experience
+    company: Tata Consultancy Services
+    role: System Engineer
+    period: Jun 2016 - Aug 2019
+    summary: The TCS BaNCS product suite is designed to help financial services institutions enhance end customer experience with open and innovative technologies.
+    details:
+      - Development of controller application using Socket programming, Multithreading and IPC on Unix platforms.
+      - Automating system work, Backup and common issues in Shell, Perl and Python scripting.
+      - Created development environment and infrastructure for clients of 24 projects.
+      - Implemented Elastic stack for monitoring the banking application using logs and servers logs.
+      - Benchmarking the application to see the performance and optimize the application according to results.
+      - Responsible for system infrastructure and support.
+    stack:
+      - C
+      - Shell
+      - Perl
+      - GIT
+      - ELK Stack
+      - Docker
+
+  - id: bite-score
+    title: BiteScore
+    kicker: Personal Project
+    image: /gallery/bite-score.png
+    kind: project
+    slug: bite-score
+    summary: Food-trust scores from structured hygiene observations — not generic reviews.
+    description: A food-trust MVP for consumers, owners, and moderators. Discover places, submit structured hygiene reviews with evidence, claim listings, and see a platform-derived trust score. This lab is a static teaser with canned Berlin data; the real app needs FastAPI and Postgres.
+    details:
+      - Built a food-trust MVP for consumers, owners, and moderators around structured hygiene, not star ratings.
+      - Let people discover places, submit evidence-backed reviews, and claim listings.
+      - Derived a platform trust score from hygiene observations instead of generic reviews.
+      - Shipped a static Berlin lab teaser; the full app is designed around FastAPI and Postgres.
+    stack:
+      - Nuxt 3
+      - Vue
+      - FastAPI
+      - PostgreSQL
+      - Docker
+    github: https://github.com/kushshiv/bite-score
+    demoPath: /labs/bite-score
+    runLocally: git clone https://github.com/kushshiv/bite-score.git && cd bite-score && make up && make db-setup && make backend && make frontend
+
+  - id: dendridb
+    title: DendriDB
+    kicker: Personal Project
+    image: /gallery/dendridb.png
+    kind: project
+    slug: dendridb
+    summary: Brain-inspired memory engine for AI systems — encode, associate, recall, forget.
+    description: An API-first memory layer with working, episodic, and semantic memory plus graph associations. Alpha (v0.1.0). This lab simulates encode → associate → recall with canned cues; the real engine needs Postgres, Redis, and Neo4j.
+    details:
+      - Built an API-first memory layer with working, episodic, and semantic memory.
+      - Encodes, associates, recalls, and forgets through graph associations.
+      - Shipped an alpha (v0.1.0) lab that simulates encode → associate → recall from canned cues.
+      - Designed the full engine around Postgres, Redis, and Neo4j.
+    stack:
+      - Python
+      - FastAPI
+      - PostgreSQL
+      - pgvector
+      - Redis
+      - Neo4j
+    github: https://github.com/kushshiv/dendridb
+    demoPath: /labs/dendridb
+    runLocally: git clone https://github.com/kushshiv/dendridb.git && cd dendridb && make setup && make docker-up && make migrate && make dev
+
+  - id: stage
+    title: The stage
+    kicker: Passion
+    image: /gallery/gnbf-gold.png
+    kind: passion
+    headline: Competitive bodybuilding
+    summary: Side hustle, hobby, and long-game. Next is NPC, then the IFBB Pro card.
+    achievement: GNBF Gold — class winner
+    details:
+      - Competed at the GNBF 9th International in October 2025.
+      - Stepped on stage in the Men's Physique division.
+      - Completed an 8-month contest prep for the show.
+    nextGoals:
+      - Compete in NPC
+      - Become IFBB Pro

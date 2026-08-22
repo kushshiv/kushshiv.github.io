@@ -105,20 +105,54 @@ export const galleryItemSchema = z
     when: z.string().min(1).optional(),
     image: z.string().regex(/^\/.+/, 'image must be a public path starting with /'),
     kind: z.enum(['now', 'experience', 'project', 'passion']),
+    summary: z.string().min(1),
+    details: z.array(z.string().min(1)).min(1),
+    stack: z.array(z.string().min(1)).optional(),
+    role: z.string().min(1).optional(),
+    period: z.string().min(1).optional(),
     company: z.string().min(1).optional(),
     slug: z.string().min(1).optional(),
+    description: z.string().min(1).optional(),
+    github: z.string().url().optional(),
+    demoPath: z.string().min(1).optional(),
+    runLocally: z.string().min(1).optional(),
+    headline: z.string().min(1).optional(),
+    achievement: z.string().min(1).optional(),
+    nextGoals: z.array(z.string().min(1)).optional(),
   })
   .superRefine((item, ctx) => {
-    if (item.kind === 'experience' && !item.company) {
-      ctx.addIssue({ code: 'custom', message: 'experience cards need company', path: ['company'] })
+    if (item.kind === 'experience' && (!item.company || !item.role || !item.period || !item.stack)) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'experience cards need company, role, period, and stack',
+        path: ['company'],
+      })
     }
-    if (item.kind === 'project' && !item.slug) {
-      ctx.addIssue({ code: 'custom', message: 'project cards need slug', path: ['slug'] })
+    if (item.kind === 'project') {
+      const demoPath = item.demoPath
+      const missing = !item.slug || !item.description || !item.github || !demoPath || !item.runLocally || !item.stack
+      if (missing) {
+        ctx.addIssue({
+          code: 'custom',
+          message: 'project cards need slug, description, github, demoPath, runLocally, and stack',
+          path: ['slug'],
+        })
+      } else if (demoPath && !demoPath.startsWith('/labs/') && !demoPath.startsWith('https://')) {
+        ctx.addIssue({
+          code: 'custom',
+          message: 'demoPath must be an internal /labs/... route or an https URL',
+          path: ['demoPath'],
+        })
+      }
     }
   })
 
-export const gallerySchema = z.object({
-  items: z.array(galleryItemSchema).min(1),
+export const siteSchema = z.object({
+  profile: profileSchema,
+  skills: skillsSchema,
+  goals: goalsSchema,
+  workLog: z.array(workLogSchema).min(1),
+  gallery: z.array(galleryItemSchema).min(1),
 })
 
 export type Profile = z.infer<typeof profileSchema>
@@ -131,6 +165,7 @@ export type Passion = z.infer<typeof passionSchema>
 export type Goals = z.infer<typeof goalsSchema>
 export type Metric = z.infer<typeof metricSchema>
 export type GalleryItem = z.infer<typeof galleryItemSchema>
+export type Site = z.infer<typeof siteSchema>
 export type GalleryCard = {
   id: string
   title: string
@@ -138,7 +173,8 @@ export type GalleryCard = {
   when?: string
   image: string
   summary: string
-  details?: string | string[]
+  details: string[]
+  stack?: string[]
   meta?: string
   href?: string
   hrefLabel?: string

@@ -267,14 +267,15 @@ function OpenedCard({ card, onClose }: { card: GalleryCard; onClose: () => void 
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-muted">{card.summary}</p>
           {card.meta ? <p className="mt-2 text-base font-medium tracking-[-0.02em] text-fg">{card.meta}</p> : null}
-          {Array.isArray(card.details) ? (
+          {card.details.length ? (
             <ul className="mt-6 list-disc space-y-2 pl-5 text-lg tracking-[-0.02em]">
               {card.details.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
-          ) : card.details ? (
-            <p className="mt-6 text-lg tracking-[-0.02em]">{card.details}</p>
+          ) : null}
+          {card.stack?.length ? (
+            <p className="mt-8 text-sm text-muted">{card.stack.join(' • ')}</p>
           ) : null}
           <div className="mt-8 flex flex-wrap gap-6 text-sm">
             {card.href && internal ? (
