@@ -11,16 +11,14 @@ items:
     period: 2026 - Present
     summary: Streamlining the team's alerting and monitoring so on-call sees fewer noisy pages and faster signal.
     details:
+      - items:
+          - Streamlined data ingestion, to enable Fraud and User Reports data to flow into Snowflake for further analysis.
       - title: "[IN PROGRESS] Improve alerting and monitoring"
         items:
-          - A few monitors existed, but nobody was looking at them.
-          - Moving all monitors into Terraform so alerting is versioned and reviewable.
-          - Writing an SOP and alert-handling playbook so anyone on-call knows what to do.
-          - Setting up a weekly support rotation so one owner acknowledges each alert and takes full responsibility.
-          - Aiming for mean time to acknowledge under 10 minutes, with faster recovery.
-      - title: "[IN PROGRESS] Streamline data ingestion"
-        items:
-          - Keep ingestion lag and failed batches visible, documented, and owned end to end.
+          - Moving all monitoring and alerting into Terraform so configurations are version-controlled, reviewable, and consistently managed.
+          - Creating a clear SOP and alert-response playbook so every on-call engineer knows how to triage, respond, and escalate incidents.
+          - Establishing a weekly support rotation with a clearly designated owner responsible for acknowledging alerts and driving them through resolution.
+          - Targeting a mean time to acknowledge (MTTA) of under 10 minutes, while reducing time to resolution and improving overall recovery speed.
     stack:
       - Python
       - FastAPI
