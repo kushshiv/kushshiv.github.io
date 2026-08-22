@@ -265,9 +265,17 @@ function OpenedCard({ card, onClose }: { card: GalleryCard; onClose: () => void 
           <h2 id={`card-title-${card.id}`} className="mt-2 text-4xl tracking-[-0.04em]">
             {card.title}
           </h2>
-          {card.meta ? <p className="mt-2 text-sm text-muted">{card.meta}</p> : null}
-          {card.details ? <p className="mt-6 text-lg tracking-[-0.02em]">{card.details}</p> : null}
-          <p className="mt-4 text-sm leading-relaxed text-muted">{card.summary}</p>
+          <p className="mt-3 text-sm leading-relaxed text-muted">{card.summary}</p>
+          {card.meta ? <p className="mt-2 text-base font-medium tracking-[-0.02em] text-fg">{card.meta}</p> : null}
+          {Array.isArray(card.details) ? (
+            <ul className="mt-6 list-disc space-y-2 pl-5 text-lg tracking-[-0.02em]">
+              {card.details.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          ) : card.details ? (
+            <p className="mt-6 text-lg tracking-[-0.02em]">{card.details}</p>
+          ) : null}
           <div className="mt-8 flex flex-wrap gap-6 text-sm">
             {card.href && internal ? (
               <Link to={card.href} className="hover:text-muted">

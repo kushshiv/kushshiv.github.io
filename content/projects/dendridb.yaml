@@ -2,6 +2,11 @@ slug: dendridb
 name: DendriDB
 tagline: Brain-inspired memory engine for AI systems — encode, associate, recall, forget.
 description: An API-first memory layer with working, episodic, and semantic memory plus graph associations. Alpha (v0.1.0). This lab simulates encode → associate → recall with canned cues; the real engine needs Postgres, Redis, and Neo4j.
+details:
+  - Built an API-first memory layer with working, episodic, and semantic memory.
+  - Encodes, associates, recalls, and forgets through graph associations.
+  - Shipped an alpha (v0.1.0) lab that simulates encode → associate → recall from canned cues.
+  - Designed the full engine around Postgres, Redis, and Neo4j.
 stack:
   - Python
   - FastAPI

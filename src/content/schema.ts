@@ -25,7 +25,7 @@ export const roleSchema = z.object({
   company: z.string().min(1),
   period: z.string().min(1),
   summary: z.string().min(1),
-  details: z.string().min(1),
+  details: z.array(z.string().min(1)).min(1),
   stack: z.array(z.string().min(1)).min(1),
 })
 
@@ -64,6 +64,7 @@ export const projectSchema = z.object({
   name: z.string().min(1),
   tagline: z.string().min(1),
   description: z.string().min(1),
+  details: z.array(z.string().min(1)).min(1),
   stack: z.array(z.string().min(1)).min(1),
   github: z.string().url(),
   demoPath: z
@@ -81,6 +82,7 @@ export const passionSchema = z.object({
   headline: z.string().min(1),
   summary: z.string().min(1),
   achievement: z.string().min(1),
+  details: z.array(z.string().min(1)).min(1),
   nextGoals: z.array(z.string().min(1)).min(1),
 })
 
@@ -136,7 +138,7 @@ export type GalleryCard = {
   when?: string
   image: string
   summary: string
-  details?: string
+  details?: string | string[]
   meta?: string
   href?: string
   hrefLabel?: string

@@ -97,7 +97,7 @@ export const galleryCards: GalleryCard[] = galleryFile.items.map((item) => {
       when: item.when,
       image: item.image,
       summary: project.tagline,
-      details: project.description,
+      details: project.details,
       meta: project.stack.join(' · '),
       href: project.demoPath,
       hrefLabel: 'Open lab',
@@ -111,7 +111,7 @@ export const galleryCards: GalleryCard[] = galleryFile.items.map((item) => {
     kicker: item.kicker,
     image: item.image,
     summary: passion.summary,
-    details: passion.headline,
+    details: passion.details,
     meta: passion.achievement,
   }
 })
