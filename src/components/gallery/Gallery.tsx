@@ -36,19 +36,23 @@ function kickerLabel(card: GalleryCard) {
 function DetailLines({ details }: { details: DetailItem[] }) {
   return (
     <ul className="mt-6 list-disc space-y-2 pl-5 text-lg tracking-[-0.02em]">
-      {details.map((item) =>
-        typeof item === 'string' ? (
-          <li key={item}>{item}</li>
-        ) : (
-          <li key={item.title}>
-            {item.title}
-            <ul className="mt-2 list-disc space-y-1 pl-5 text-base">
-              {item.items.map((point) => (
-                <li key={point}>{point}</li>
-              ))}
-            </ul>
-          </li>
-        ),
+      {details.flatMap((group) =>
+        group.title
+          ? [
+              <li key={group.title}>
+                {group.title}
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-base">
+                  {group.items.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+              </li>,
+            ]
+          : group.items.map((point) => (
+              <li key={point} className="text-lg">
+                {point}
+              </li>
+            )),
       )}
     </ul>
   )
@@ -295,12 +299,12 @@ function OpenedCard({ card, onClose }: { card: GalleryCard; onClose: () => void 
           <div className="mt-8 flex flex-wrap gap-6 text-sm">
             {card.href && internal ? (
               <Link to={card.href} className="hover:text-muted">
-                {card.hrefLabel ?? 'Open'}
+                Open lab
               </Link>
             ) : null}
             {card.href && !internal ? (
               <a href={card.href} className="hover:text-muted">
-                {card.hrefLabel ?? 'Open'}
+                Open lab
               </a>
             ) : null}
             {card.github ? (

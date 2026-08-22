@@ -1,4 +1,5 @@
-# Gallery cards. Drop a photo in public/gallery/ and set image here.
+# Gallery cards. Same fields on every card; omit a key if it does not apply.
+# details is always a list of groups: { title?, items: [...] }
 items:
   - id: aviv
     title: Aviv Group
@@ -17,7 +18,9 @@ items:
           - Writing an SOP and alert-handling playbook so anyone on-call knows what to do.
           - Setting up a weekly support rotation so one owner acknowledges each alert and takes full responsibility.
           - Aiming for mean time to acknowledge under 10 minutes, with faster recovery.
-      - "[IN PROGRESS] Streamline data ingestion — Keep ingestion lag and failed batches visible, documented, and owned end to end."
+      - title: "[IN PROGRESS] Streamline data ingestion"
+        items:
+          - Keep ingestion lag and failed batches visible, documented, and owned end to end.
     stack:
       - Python
       - FastAPI
@@ -37,13 +40,14 @@ items:
     period: Aug 2022 - Feb 2026
     summary: Leading digital road freight forwarder in continental Europe, linking large commercial shippers with small freight carriers.
     details:
-      - Migrated synchronous Django monolith into asynchronous FastAPI microservices using Kafka, improving system scalability and reliability.
-      - Designed and deployed event-driven architecture on AWS EKS via Terraform.
-      - Adopted an AI-first approach to optimize feature delivery using Copilot, Cursor, and LibreChat.
-      - Led end-to-end feature design and implementation, collaborating with cross-functional teams.
-      - Reduced production incidents and bugs and improved stability and team delivery rate.
-      - Developed dashboards and alerts in Datadog, enhancing system observability and response times.
-      - Worked on service re-architecture and cleaned up more than 10K lines of unused code.
+      - items:
+          - Migrated synchronous Django monolith into asynchronous FastAPI microservices using Kafka, improving system scalability and reliability.
+          - Designed and deployed event-driven architecture on AWS EKS via Terraform.
+          - Adopted an AI-first approach to optimize feature delivery using Copilot, Cursor, and LibreChat.
+          - Led end-to-end feature design and implementation, collaborating with cross-functional teams.
+          - Reduced production incidents and bugs and improved stability and team delivery rate.
+          - Developed dashboards and alerts in Datadog, enhancing system observability and response times.
+          - Worked on service re-architecture and cleaned up more than 10K lines of unused code.
     stack:
       - Python
       - FastAPI
@@ -70,11 +74,12 @@ items:
     period: Jan 2021 - Jun 2022
     summary: Transform National Broadcast and Cable TV by enabling precision audience targeting at-scale for National advertisers, thereby increasing returns on their TV media investment.
     details:
-      - Worked on Django Rest Framework for advertisement and OTT-ecommerce domain for mobile, web and TV application.
-      - Ensuring low latency, high availability applications with responsiveness to request from API.
-      - Worked on celery to implement task to update user information at scheduled times.
-      - Deployment of docker containerized application on EC2 manually.
-      - Working with various AWS services like EC2, S3, API Gateway, Lambda, Cloud Watch.
+      - items:
+          - Worked on Django Rest Framework for advertisement and OTT-ecommerce domain for mobile, web and TV application.
+          - Ensuring low latency, high availability applications with responsiveness to request from API.
+          - Worked on celery to implement task to update user information at scheduled times.
+          - Deployment of docker containerized application on EC2 manually.
+          - Working with various AWS services like EC2, S3, API Gateway, Lambda, Cloud Watch.
     stack:
       - Django
       - Python
@@ -97,11 +102,12 @@ items:
     period: Sep 2019 - Dec 2020
     summary: An industry-leading digital banking solution suite that helps traditional and emerging financial institutions drive truly digital transformation.
     details:
-      - Implementation of business logic in development of core banking functionalities in Finacle.
-      - Requirement gathering, analysis, design, development, unit testing and debugging of application Module.
-      - Development and Maintenance of bug fixes and patches for Deposits Module.
-      - Reconciliation of multiple version of product and keep the code updated as per clients version.
-      - Writing shell and python scripts to run EOD and SOD jobs like interest and paychecks.
+      - items:
+          - Implementation of business logic in development of core banking functionalities in Finacle.
+          - Requirement gathering, analysis, design, development, unit testing and debugging of application Module.
+          - Development and Maintenance of bug fixes and patches for Deposits Module.
+          - Reconciliation of multiple version of product and keep the code updated as per clients version.
+          - Writing shell and python scripts to run EOD and SOD jobs like interest and paychecks.
     stack:
       - C++
       - Python
@@ -120,12 +126,13 @@ items:
     period: Jun 2016 - Aug 2019
     summary: The TCS BaNCS product suite is designed to help financial services institutions enhance end customer experience with open and innovative technologies.
     details:
-      - Development of controller application using Socket programming, Multithreading and IPC on Unix platforms.
-      - Automating system work, Backup and common issues in Shell, Perl and Python scripting.
-      - Created development environment and infrastructure for clients of 24 projects.
-      - Implemented Elastic stack for monitoring the banking application using logs and servers logs.
-      - Benchmarking the application to see the performance and optimize the application according to results.
-      - Responsible for system infrastructure and support.
+      - items:
+          - Development of controller application using Socket programming, Multithreading and IPC on Unix platforms.
+          - Automating system work, Backup and common issues in Shell, Perl and Python scripting.
+          - Created development environment and infrastructure for clients of 24 projects.
+          - Implemented Elastic stack for monitoring the banking application using logs and servers logs.
+          - Benchmarking the application to see the performance and optimize the application according to results.
+          - Responsible for system infrastructure and support.
     stack:
       - C
       - Shell
@@ -143,12 +150,15 @@ items:
     summary: Food-trust scores from structured hygiene observations — not generic reviews.
     description: A food-trust MVP for consumers, owners, and moderators. Discover places, submit structured hygiene reviews with evidence, claim listings, and see a platform-derived trust score. This lab is a static teaser with canned Berlin data; the real app needs FastAPI and Postgres.
     details:
-      - Built a food-trust MVP for consumers, owners, and moderators around structured hygiene, not star ratings.
-      - Let people discover places, submit evidence-backed reviews, and claim listings.
-      - Derived a platform trust score from hygiene observations instead of generic reviews.
-      - Shipped a static Berlin lab teaser; the full app is designed around FastAPI and Postgres.
-      - "[IN PROGRESS] Host a BiteScore demo — Production or cheap VPS deploy so the real app can replace this static lab."
-      - "[IN PROGRESS] S3 evidence uploads — Move BiteScore review photos off local disk onto object storage."
+      - items:
+          - Built a food-trust MVP for consumers, owners, and moderators around structured hygiene, not star ratings.
+          - Let people discover places, submit evidence-backed reviews, and claim listings.
+          - Derived a platform trust score from hygiene observations instead of generic reviews.
+          - Shipped a static Berlin lab teaser; the full app is designed around FastAPI and Postgres.
+      - title: "[IN PROGRESS]"
+        items:
+          - Host a BiteScore demo — Production or cheap VPS deploy so the real app can replace this static lab.
+          - S3 evidence uploads — Move BiteScore review photos off local disk onto object storage.
     stack:
       - Nuxt 3
       - Vue
@@ -168,12 +178,15 @@ items:
     summary: Brain-inspired memory engine for AI systems — encode, associate, recall, forget.
     description: An API-first memory layer with working, episodic, and semantic memory plus graph associations. Alpha (v0.1.0). This lab simulates encode → associate → recall with canned cues; the real engine needs Postgres, Redis, and Neo4j.
     details:
-      - Built an API-first memory layer with working, episodic, and semantic memory.
-      - Encodes, associates, recalls, and forgets through graph associations.
-      - Shipped an alpha (v0.1.0) lab that simulates encode → associate → recall from canned cues.
-      - Designed the full engine around Postgres, Redis, and Neo4j.
-      - "[IN PROGRESS] Real DendriDB embeddings — Replace the local-hash embedder with a proper model behind EMBEDDING_MODEL."
-      - "[IN PROGRESS] Seed and playground — Implement make seed and a tiny UI so DendriDB is demoable without reading OpenAPI first."
+      - items:
+          - Built an API-first memory layer with working, episodic, and semantic memory.
+          - Encodes, associates, recalls, and forgets through graph associations.
+          - Shipped an alpha (v0.1.0) lab that simulates encode → associate → recall from canned cues.
+          - Designed the full engine around Postgres, Redis, and Neo4j.
+      - title: "[IN PROGRESS]"
+        items:
+          - Real DendriDB embeddings — Replace the local-hash embedder with a proper model behind EMBEDDING_MODEL.
+          - Seed and playground — Implement make seed and a tiny UI so DendriDB is demoable without reading OpenAPI first.
     stack:
       - Python
       - FastAPI
@@ -190,14 +203,17 @@ items:
     kicker: Passion
     image: /gallery/gnbf-gold.png
     kind: passion
-    headline: Competitive bodybuilding
+    role: Competitive bodybuilding
+    period: GNBF Gold — class winner
     summary: Side hustle, hobby, and long-game. Next is NPC, then the IFBB Pro card.
-    achievement: GNBF Gold — class winner
     details:
-      - Competed at the GNBF 9th International in October 2025.
-      - Stepped on stage in the Men's Physique division.
-      - Completed an 8-month contest prep for the show.
-      - "[IN PROGRESS] Compete NPC — Step onto an NPC stage with a documented prep."
-      - "[IN PROGRESS] Earn IFBB Pro card — Long-horizon goal after NPC experience."
-      - "[IN PROGRESS] Contest-prep system — Training, peak week, and recovery written down so the next show is not improvised."
-      - "[IN PROGRESS] Stay healthy through prep — Progress without injuries that wipe a season."
+      - items:
+          - Competed at the GNBF 9th International in October 2025.
+          - Stepped on stage in the Men's Physique division.
+          - Completed an 8-month contest prep for the show.
+      - title: "[IN PROGRESS]"
+        items:
+          - Compete NPC — Step onto an NPC stage with a documented prep.
+          - Earn IFBB Pro card — Long-horizon goal after NPC experience.
+          - Contest-prep system — Training, peak week, and recovery written down so the next show is not improvised.
+          - Stay healthy through prep — Progress without injuries that wipe a season.

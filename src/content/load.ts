@@ -1,13 +1,5 @@
 import { parse } from 'yaml'
-import {
-  gallerySchema,
-  profileSchema,
-  type Experience,
-  type GalleryCard,
-  type Profile,
-  type Project,
-  type Skills,
-} from './schema'
+import { gallerySchema, profileSchema, type GalleryCard, type Profile, type Project, type Skills } from './schema'
 
 import profileRaw from '../../content/profile.yaml?raw'
 import galleryRaw from '../../content/gallery.yaml?raw'
@@ -20,13 +12,8 @@ export const skills: Skills = skillGroups
 
 const galleryFile = gallerySchema.parse(parse(galleryRaw))
 
-function flatDetails(details: (typeof galleryFile.items)[number]['details']) {
-  return details.flatMap((item) => (typeof item === 'string' ? [item] : [item.title, ...item.items]))
-}
-
 function cardMeta(item: (typeof galleryFile.items)[number]) {
-  if (item.role && item.period) return `${item.role} · ${item.period}`
-  return item.achievement
+  return [item.role, item.period].filter(Boolean).join(' · ') || undefined
 }
 
 export const galleryCards: GalleryCard[] = galleryFile.items.map((item) => ({
@@ -40,33 +27,22 @@ export const galleryCards: GalleryCard[] = galleryFile.items.map((item) => ({
   stack: item.stack,
   meta: cardMeta(item),
   href: item.demoPath,
-  hrefLabel: item.demoPath ? 'Open lab' : undefined,
   github: item.github,
 }))
 
-export const projects: Project[] = galleryFile.items
-  .filter((item) => item.kind === 'project')
-  .map((item) => ({
-    slug: item.slug!,
-    name: item.title,
-    tagline: item.summary,
-    description: item.description!,
-    details: flatDetails(item.details),
-    stack: item.stack!,
-    github: item.github!,
-    demoPath: item.demoPath!,
-    runLocally: item.runLocally!,
-  }))
-
-export const experience: Experience = {
-  roles: galleryFile.items
-    .filter((item) => item.kind === 'experience')
-    .map((item) => ({
-      title: item.role!,
-      company: item.company!,
-      period: item.period!,
-      summary: item.summary,
-      details: flatDetails(item.details),
-      stack: item.stack!,
-    })),
-}
+export const projects: Project[] = galleryFile.items.flatMap((item) => {
+  if (!item.slug || !item.github || !item.demoPath || !item.runLocally || !item.stack) return []
+  return [
+    {
+      slug: item.slug,
+      name: item.title,
+      tagline: item.summary,
+      description: item.description ?? item.summary,
+      details: item.details,
+      stack: item.stack,
+      github: item.github,
+      demoPath: item.demoPath,
+      runLocally: item.runLocally,
+    },
+  ]
+})
