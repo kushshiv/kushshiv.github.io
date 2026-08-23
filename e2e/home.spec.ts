@@ -28,10 +28,6 @@ test('about has links', async ({ page }) => {
     'https://linkedin.com/in/shivendrapk',
   )
   await expect(page.getByRole('link', { name: 'GitHub' })).toHaveAttribute('href', 'https://github.com/kushshiv')
-  await expect(page.getByRole('link', { name: /shivendra\.ds48@gmail\.com/ })).toHaveAttribute(
-    'href',
-    'mailto:shivendra.ds48@gmail.com',
-  )
 })
 
 test('lab cards include open lab and GitHub', async ({ page }) => {

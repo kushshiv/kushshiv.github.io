@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState, type FocusEvent, type PointerEvent as ReactPointerEvent } from 'react'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
-import { galleryCards, profile } from '@/content/load'
+import { galleryCards } from '@/content/load'
 import type { DetailItem, GalleryCard } from '@/content/schema'
 import usePrefersReducedMotion from '@/hooks/usePrefersReducedMotion'
 
@@ -188,13 +188,6 @@ export default function Gallery() {
 
   return (
     <div className="gallery-stage" role="region" aria-label="Project cards">
-      <a
-        href={`mailto:${profile.email}`}
-        className="absolute bottom-6 left-6 z-10 text-[13px] text-muted hover:text-fg"
-        onPointerDown={(event) => event.stopPropagation()}
-      >
-        {profile.email}
-      </a>
       {hoveredCard && !opened ? (
         <div ref={metaRef} className="gallery-hover-meta" aria-hidden="true">
           <p className="gallery-hover-kicker">{kickerLabel(hoveredCard)}</p>

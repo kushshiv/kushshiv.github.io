@@ -6,7 +6,6 @@ describe('content schemas', () => {
   it('parses profile contact URLs over https', () => {
     expect(profile.linkedin.startsWith('https://')).toBe(true)
     expect(profile.github.startsWith('https://')).toBe(true)
-    expect(profile.email).toContain('@')
   })
 
   it('uses internal lab routes or https demo URLs', () => {

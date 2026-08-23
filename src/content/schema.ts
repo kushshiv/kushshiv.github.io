@@ -22,7 +22,6 @@ export const profileSchema = z.object({
   location: z.string().min(1),
   company: z.string().min(1),
   blurb: z.string().min(1),
-  email: z.string().email(),
   linkedin: z.string().url(),
   github: z.string().url(),
   photo: z.string().min(1),
