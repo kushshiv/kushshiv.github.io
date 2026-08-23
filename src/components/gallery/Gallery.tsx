@@ -268,14 +268,14 @@ function OpenedCard({ card, onClose }: { card: GalleryCard; onClose: () => void 
 
   return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center overflow-auto bg-black/80 px-6 pt-28 pb-10"
+      className="fixed inset-0 z-50 flex items-start justify-center overflow-auto bg-black/80 px-6 pt-[var(--nav-height)] pb-10"
       role="dialog"
       aria-modal="true"
       aria-labelledby={`card-title-${card.id}`}
       onClick={onClose}
     >
       <article
-        className="max-h-[calc(100dvh-9.5rem)] w-full max-w-3xl overflow-auto bg-[#141414]"
+        className="max-h-[calc(100dvh-var(--nav-height)-2.5rem)] w-full max-w-3xl overflow-auto bg-[#141414]"
         onClick={(event) => event.stopPropagation()}
       >
         <img src={card.image} alt="" className="aspect-[16/10] w-full object-cover" />

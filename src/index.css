@@ -8,6 +8,12 @@
   --color-line: #2a2a2a;
 }
 
+:root {
+  --nav-pad-y: 1.5rem;
+  --nav-line: 1.21875rem;
+  --nav-height: calc(var(--nav-pad-y) * 2 + var(--nav-line));
+}
+
 html,
 body,
 #root {
