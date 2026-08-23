@@ -7,7 +7,7 @@ items:
     when: 2026 - Present
     image: /gallery/aviv.png
     kind: now
-    role: Software Engineer II
+    role: Senior Software Engineer
     period: 2026 - Present
     summary: Streamlining the team's alerting and monitoring so on-call sees fewer noisy pages and faster signal.
     details:
@@ -22,9 +22,10 @@ items:
     stack:
       - Python
       - FastAPI
-      - Kafka
-      - AWS
+      - AWS SQS, SNS, Lambda, DynamoDB, S3
       - Datadog
+      - Terraform
+      - Snowflake
       - Opsgenie
 
   - id: sennder
