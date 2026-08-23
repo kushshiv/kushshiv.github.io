@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState, type FocusEvent, type PointerEvent as ReactPointerEvent } from 'react'
+import { createPortal } from 'react-dom'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { galleryCards } from '@/content/load'
@@ -265,16 +266,16 @@ function CardFace({
 function OpenedCard({ card, onClose }: { card: GalleryCard; onClose: () => void }) {
   const internal = card.href?.startsWith('/')
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-6"
+      className="fixed inset-0 z-50 flex items-start justify-center overflow-auto bg-black/80 px-6 pt-28 pb-10"
       role="dialog"
       aria-modal="true"
       aria-labelledby={`card-title-${card.id}`}
       onClick={onClose}
     >
       <article
-        className="max-h-[90dvh] w-full max-w-3xl overflow-auto bg-[#141414]"
+        className="max-h-[calc(100dvh-9.5rem)] w-full max-w-3xl overflow-auto bg-[#141414]"
         onClick={(event) => event.stopPropagation()}
       >
         <img src={card.image} alt="" className="aspect-[16/10] w-full object-cover" />
@@ -311,6 +312,7 @@ function OpenedCard({ card, onClose }: { card: GalleryCard; onClose: () => void 
           </div>
         </div>
       </article>
-    </div>
+    </div>,
+    document.body,
   )
 }

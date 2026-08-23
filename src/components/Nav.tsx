@@ -8,7 +8,7 @@ const links = [
 
 export default function Nav() {
   return (
-    <header className="pointer-events-none fixed top-0 right-0 left-0 z-30">
+    <header className="pointer-events-none fixed top-0 right-0 left-0 z-[60]">
       <div className="relative flex items-center px-6 py-6 sm:px-10">
         <nav aria-label="Primary" className="pointer-events-auto flex items-center gap-6 sm:gap-8">
           {links.map((link) => (
