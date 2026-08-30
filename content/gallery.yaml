@@ -12,12 +12,12 @@ items:
     summary: Streamlining the team's alerting and monitoring so on-call sees fewer noisy pages and faster signal.
     details:
       - items:
-          - Streamlined data ingestion, to enable Fraud and User Reports data to flow into Snowflake for further analysis.
+          - Streamlined data ingestion, to enable Fraud and User Reports data to flow into Snowflake for further data analytics.
       - title: "[IN PROGRESS] Improve alerting and monitoring"
         items:
           - Moving all monitoring and alerting into Terraform so configurations are version-controlled, reviewable, and consistently managed.
-          - Creating a clear SOP and alert-response playbook so every on-call engineer knows how to triage, respond, and escalate incidents.
-          - Establishing a weekly support rotation with a clearly designated owner responsible for acknowledging alerts and driving them through resolution.
+          - [Done] Creating a clear SOP and alert-response playbook so every on-call engineer knows how to triage, respond, and escalate incidents.
+          - [Done] Establishing a weekly support rotation with a clearly designated owner responsible for acknowledging alerts and driving them through resolution.
           - Targeting a mean time to acknowledge (MTTA) of under 10 minutes, while reducing time to resolution and improving overall recovery speed.
     stack:
       - Python
